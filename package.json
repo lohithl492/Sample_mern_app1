@@ -1,0 +1,24 @@
+{
+  "name": "sample_mern_app",
+  "version": "1.0.0",
+  "description": "hrmanagement",
+  "homepage": "https://github.com/lohithl492/Sample_mern_app1#readme",
+  "bugs": {
+    "url": "https://github.com/lohithl492/Sample_mern_app1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lohithl492/Sample_mern_app1.git"
+  },
+  "license": "ISC",
+  "author": "Lohith",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.6.0"
+  }
+}
