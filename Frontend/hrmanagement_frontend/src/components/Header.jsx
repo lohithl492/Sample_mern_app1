@@ -39,6 +39,11 @@ function Header() {
                 Contact
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin-login">
+                Admin Login
+              </Link>
+            </li >
           </ul>
         </div>
       </div>

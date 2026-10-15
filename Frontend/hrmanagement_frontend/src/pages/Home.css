@@ -1,0 +1,184 @@
+
+.home-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.home-title {
+  display: none;
+}
+
+/* Poster slider */
+.poster-carousel {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 100px);
+  min-height: 400px;
+  max-height: 850px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #111;
+  border-radius: 0;
+  isolation: isolate;
+}
+
+/* Each slide occupies the entire carousel */
+.poster-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.poster-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+/* Blurred background fills any unused space */
+.poster-background {
+  position: absolute;
+  inset: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  object-fit: cover;
+  object-position: center;
+  filter: blur(15px) brightness(0.5);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Main poster: preserve the complete original image */
+.poster-image {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+/* Navigation buttons */
+.poster-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  font-size: 30px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.poster-control:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.poster-previous {
+  left: 14px;
+}
+
+.poster-next {
+  right: 14px;
+}
+
+/* Slide indicators */
+.poster-indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.poster-indicator {
+  width: 25px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.poster-indicator.selected {
+  width: 38px;
+  background: #fff;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .poster-carousel {
+    height: 70vh;
+    min-height: 350px;
+  }
+
+  .poster-control {
+    width: 38px;
+    height: 52px;
+    font-size: 25px;
+  }
+
+  .poster-previous {
+    left: 8px;
+  }
+
+  .poster-next {
+    right: 8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .poster-carousel {
+    height: 65vh;
+    min-height: 320px;
+  }
+
+  .poster-image {
+    object-fit: contain;
+  }
+
+  .poster-control {
+    width: 32px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  .poster-indicators {
+    bottom: 10px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .poster-slide {
+    transition: none;
+  }
+}

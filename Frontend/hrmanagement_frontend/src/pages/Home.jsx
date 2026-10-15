@@ -1,113 +1,97 @@
 import { useState, useEffect } from "react";
-
 import img1 from "../assets/img1.jpg.jpg";
 import img2 from "../assets/img2.jpg.jpg";
 import img3 from "../assets/img3.jpg.jpg";
+import "./Home.css";
 
 function Home() {
   let [currentSlide, setCurrentSlide] = useState(0);
 
-  let posters = [
-    {
-      image: img1,
-      title: "Welcome",
-      description: "Welcome to the HR Management System",
-    },
-    {
-      image: img2,
-      title: "Our Services",
-      description: "Manage employees efficiently",
-    },
-    {
-      image: img3,
-      title: "HR Management",
-      description: "Organize your workplace",
-    },
+  let slides = [
+    { image: img1, alt: "Movie poster 1" },
+    { image: img2, alt: "Movie poster 2" },
+    { image: img3, alt: "Movie poster 3" },
   ];
 
-  useEffect(() => {
-    let timer = setInterval(() => {
-      setCurrentSlide((previousSlide) => {
-        return (previousSlide + 1) % posters.length;
-      });
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   let nextSlide = () => {
-    setCurrentSlide((currentSlide + 1) % posters.length);
+    setCurrentSlide((currentSlide + 1) % slides.length);
   };
 
   let previousSlide = () => {
     setCurrentSlide(
-      (currentSlide - 1 + posters.length) % posters.length
+      (currentSlide - 1 + slides.length) % slides.length
     );
   };
 
+  useEffect(() => {
+    let timer = setInterval(() => {
+      setCurrentSlide((previousSlide) =>
+        (previousSlide + 1) % slides.length
+      );
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="container-fluid px-3 px-md-4">
-      <h1 className="text-center my-4">Home Page</h1>
+    <div className="home-page">
+      <h1 className="home-title">Home Page</h1>
 
-      <div className="custom-carousel">
-
-        {/* Posters */}
-        {posters.map((poster, index) => (
+      <div className="poster-carousel">
+        {slides.map((slide, index) => (
           <div
             key={index}
-            className="custom-slide"
-            style={{
-              display: currentSlide === index ? "block" : "none",
-            }}
+            className={`poster-slide ${
+              currentSlide === index ? "active" : ""
+            }`}
+            aria-hidden={currentSlide !== index}
           >
             <img
-              src={poster.image}
-              alt={poster.title}
-              className="poster-image"
+              src={slide.image}
+              alt=""
+              className="poster-background"
             />
 
-            <div className="custom-caption">
-              <h2>{poster.title}</h2>
-              <p>{poster.description}</p>
-            </div>
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className="poster-image"
+            />
           </div>
         ))}
 
-        {/* Previous Button */}
         <button
           type="button"
-          className="custom-prev"
+          className="poster-control poster-previous"
           onClick={previousSlide}
           aria-label="Previous poster"
         >
           &#10094;
         </button>
 
-        {/* Next Button */}
         <button
           type="button"
-          className="custom-next"
+          className="poster-control poster-next"
           onClick={nextSlide}
           aria-label="Next poster"
         >
           &#10095;
         </button>
 
-        {/* Indicators */}
-        <div className="custom-indicators">
-          {posters.map((poster, index) => (
+        <div className="poster-indicators">
+          {slides.map((slide, index) => (
             <button
               key={index}
               type="button"
-              className={
-                currentSlide === index ? "indicator active" : "indicator"
-              }
+              className={`poster-indicator ${
+                currentSlide === index ? "selected" : ""
+              }`}
               onClick={() => setCurrentSlide(index)}
               aria-label={`Show poster ${index + 1}`}
-            ></button>
+              aria-current={currentSlide === index ? "true" : undefined}
+            />
           ))}
         </div>
-
       </div>
     </div>
   );
