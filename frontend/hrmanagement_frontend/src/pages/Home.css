@@ -1,0 +1,194 @@
+
+.home-page {
+  background: #f4f7fb;
+  min-height: 80vh;
+  padding-left: 4% !important;
+  padding-right: 4% !important;
+}
+
+.home-carousel {
+  max-width: 1500px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(16, 24, 40, 0.15);
+}
+
+.home-slide-image {
+  height: 520px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark overlay over the image */
+.home-slide-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 24, 44, 0.88) 0%,
+    rgba(12, 24, 44, 0.55) 48%,
+    rgba(12, 24, 44, 0.08) 100%
+  );
+}
+
+.home-slide-content {
+  max-width: 650px;
+  padding: 35px 25px 55px;
+  color: #ffffff;
+}
+
+.home-badge {
+  display: inline-block;
+  background: rgba(56, 217, 245, 0.16);
+  color: #66e5fa;
+  border: 1px solid rgba(102, 229, 250, 0.45);
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.home-slide-content h1 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.home-slide-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e7f1;
+  margin-bottom: 28px;
+}
+
+.home-cta {
+  background: #38d9f5;
+  color: #101828;
+  border: 2px solid #38d9f5;
+  border-radius: 9px;
+  padding: 12px 22px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.home-cta:hover {
+  background: transparent;
+  color: #ffffff;
+  border-color: #38d9f5;
+  transform: translateY(-2px);
+}
+
+.home-carousel-control {
+  width: 7%;
+}
+
+.home-carousel .carousel-indicators {
+  margin-bottom: 20px;
+}
+
+.home-carousel .carousel-indicators button {
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
+}
+
+/* Welcome section */
+.home-welcome {
+  max-width: 850px;
+  margin: 55px auto 35px;
+  padding: 15px;
+}
+
+.welcome-label {
+  color: #087f9c;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.home-welcome h2 {
+  margin-top: 12px;
+  margin-bottom: 15px;
+  color: #152744;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+}
+
+.home-welcome p {
+  color: #66758a;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .home-slide-image {
+    height: 400px;
+  }
+
+  .home-slide-content {
+    padding: 25px 15px 45px;
+  }
+
+  .home-slide-content p {
+    font-size: 0.95rem;
+  }
+
+  .home-carousel-control {
+    width: 12%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .home-page {
+    padding: 15px 12px !important;
+  }
+
+  .home-carousel {
+    border-radius: 14px;
+  }
+
+  .home-slide-image {
+    height: 340px;
+  }
+
+  .home-slide-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(12, 24, 44, 0.82),
+      rgba(12, 24, 44, 0.35)
+    );
+  }
+
+  .home-slide-content {
+    padding: 20px 12px 45px;
+  }
+
+  .home-slide-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-slide-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .home-badge {
+    margin-bottom: 14px;
+    padding: 6px 12px;
+  }
+
+  .home-cta {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .home-welcome {
+    margin-top: 30px;
+  }
+}

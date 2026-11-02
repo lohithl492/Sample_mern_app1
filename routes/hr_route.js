@@ -1,22 +1,31 @@
-let express=require("express");
+let express=require('express');
 let router=express.Router();
-router.get("/viewemployees",(req,res)=>{
-    res.send("view employees route");
+let {users} =require('../models/users');
+
+let {tasks}=require('../models/tasks');
+
+router.get("/viewemployees",async (req,res)=>{
+    let result=await  users.find();
+    res.send(result);
+});
+
+router.post("/assign-task",async (req,res)=>{
+    let data=req.body;
+    let newTask=new tasks(data);
+    let result=await newTask.save();
+    res.send(result);     
 })
-router.post("/assign-task",(req,res)=>{
-    res.send("assign task route");
-})
-router.get("/view-task",(req,res)=>{
-    res.send("view task route");
-})
-router.delete("/deleteemployee/:id",async(req,res)=>{
+
+
+
+
+router.delete("/deleteemployee/:id",async (req,res)=>{
     let result=await users.findByIdAndDelete(req.params.id)
     if(result){
-        res.send("employee deleted sucess");
+        res.send("employee deleted success");
     }else{
-    res.send("delete empployee route");
+        res.send("no user found");
     }
 })
-// localhost:3000/api/hr/assign-task =>POST
-// localhost:3000/api/hr/viewtasks =>GET
+
 module.exports=router;

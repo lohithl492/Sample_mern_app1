@@ -1,12 +1,11 @@
-const { Timestamp } = require('mongodb');
 let mongoose=require('mongoose');
 
-let taskschema=mongoose.Schema({
+let taskSchema=mongoose.Schema({
     taskname:{
         type:String,
         required:true
     },
-    taskdescription:{
+    taskdesc:{
         type:String,
         required:true
     },
@@ -16,21 +15,21 @@ let taskschema=mongoose.Schema({
         required:true
     },
     assignedBy:{
-          type:mongoose.Schema.Types.ObjectId,
+         type:mongoose.Schema.Types.ObjectId,
         ref:'users',
         required:true
     },
-    duedate:{
-        type:String,
-        required:true
+    dueDate:{
+        type:Date,
+        require:true
     },
     status:{
         type:String,
-        enum:["Pending","In progress","Completed"],
-        default:"Pending"
+        enum:["pending","in-progress","completed"],
+        default:"pending"
     }
 },{
     timestamps:true
 });
-const tasks=mongoose.model('tasks',taskschema);
+const tasks=mongoose.model('tasks',taskSchema);
 module.exports={tasks}
